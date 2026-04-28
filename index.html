@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rua do Outono | Daiane Borcath</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfc;
+            color: #333333;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .accent-color { color: #b35a44; }
+        .bg-accent { background-color: #b35a44; }
+        .bg-off-white { background-color: #fcfcfc; }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .loader {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #b35a44;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .swiper {
+            width: 100%;
+            padding-bottom: 50px !important;
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            color: #b35a44 !important;
+        }
+        .swiper-pagination-bullet-active {
+            background: #b35a44 !important;
+        }
+    </style>
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="py-12 px-6 text-center">
+        <p class="serif italic text-lg tracking-widest uppercase opacity-70">Daiane Borcath</p>
+        <p class="text-[10px] tracking-[0.3em] uppercase opacity-40 mt-1 font-light">Fotografia de Afeto</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="px-6 py-16 md:py-32 text-center max-w-3xl mx-auto">
+        <h1 class="text-4xl md:text-6xl font-semibold leading-tight mb-8">
+            Memórias que <span class="accent-color italic">aquecem.</span>
+        </h1>
+        <p class="text-lg opacity-80 font-light leading-relaxed mb-16">
+            Ensaios na Rua do Outono. A beleza da estação em registros para sempre.
+        </p>
+        <a href="#oferta" class="inline-block bg-accent text-white px-10 py-4 rounded-full text-sm tracking-wide hover:opacity-90 transition-all hover:scale-105 duration-300">
+            Quero meu presente gratuito
+        </a>
+    </section>
+
+    <!-- Location Section -->
+    <section class="px-6 py-24 max-w-5xl mx-auto text-center fade-in">
+        <h2 class="text-3xl font-semibold mb-6">A magia da Rua do Outono.</h2>
+        <p class="text-lg opacity-70 font-light leading-relaxed max-w-2xl mx-auto mb-12">
+            Um cenário onde as cores se transformam e a luz abraça cada detalhe. Um lugar que dura pouco tempo, perfeito para quem quer guardar memórias para sempre.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="aspect-square overflow-hidden rounded-sm">
+                <img src="C:/Users/eliuh/Desktop/Orçamentos Fotografia Daiane/rua_do_outono_opt/IMG_8032.jpg" alt="Cenário Outono 1" class="w-full h-full object-cover">
+            </div>
+            <div class="aspect-square overflow-hidden rounded-sm">
+                <img src="C:/Users/eliuh/Desktop/Orçamentos Fotografia Daiane/rua_do_outono_opt/IMG_8049.jpg" alt="Cenário Outono 2" class="w-full h-full object-cover">
+            </div>
+            <div class="aspect-square overflow-hidden rounded-sm">
+                <img src="C:/Users/eliuh/Desktop/Orçamentos Fotografia Daiane/rua_do_outono_opt/IMG_8100.jpg" alt="Cenário Outono 3" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="px-6 py-24 max-w-5xl mx-auto fade-in">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-semibold mb-4">Onde a magia acontece</h2>
+            <p class="opacity-70 font-light">Um refúgio de cores no coração da cidade.</p>
+        </div>
+        <div class="w-full h-[450px] rounded-lg overflow-hidden shadow-sm border border-gray-100">
+            <!-- Google Maps Embed Placeholder -->
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.029153863484!2d-49.3280120238347!3d-25.4372888331816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce39393c725f3%3A0x36976f6116ea7c9c!2sRua%20do%20Outono!5e0!3m2!1spt-BR!2sbr!4v1776858656359!5m2!1spt-BR!2sbr" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="px-6 py-12 max-w-5xl mx-auto">
+        <div class="swiper mySwiper fade-in">
+            <div class="swiper-wrapper">
+                <!-- Selected Top 25 Photos from report -->
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9240.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9189.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9111.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9064.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9021.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9065.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9128.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_8910.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_8886.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9131.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9165.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_8901.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9143.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_8973.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9163.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_8920.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9082.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_8948.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_8916.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9225.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9150.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9090.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_9039.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_8939.jpg" alt="Ensaio Inverno"></div>
+                <div class="swiper-slide"><img src="C:/Users/eliuh/Desktop/Família Hahner/IMG_8912.jpg" alt="Ensaio Inverno"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- Offer Section -->
+    <section id="oferta" class="px-6 py-24 text-center max-w-xl mx-auto">
+        <div id="form-container" class="fade-in">
+            <h2 class="text-3xl font-semibold mb-4">Um presente para você.</h2>
+            <p class="opacity-50 font-light mb-10">Preencha seus dados e descubra quantas fotos profissionais você ganhará gratuitamente na rua do outono para iniciar sua coleção de memórias.</p>
+            
+            <form id="lead-form" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider opacity-50 mb-1 ml-1">Nome</label>
+                    <input type="text" name="nome" id="nome" required class="w-full px-4 py-3 bg-transparent border border-gray-200 rounded-sm focus:border-accent outline-none transition-all duration-300" placeholder="Seu nome completo">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider opacity-50 mb-1 ml-1">WhatsApp</label>
+                    <input type="tel" name="whatsapp" id="whatsapp" required class="w-full px-4 py-3 bg-transparent border border-gray-200 rounded-sm focus:border-accent outline-none transition-all duration-300" placeholder="(00) 00000-0000">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider opacity-50 mb-1 ml-1">E-mail</label>
+                    <input type="email" name="email" id="email" required class="w-full px-4 py-3 bg-transparent border border-gray-200 rounded-sm focus:border-accent outline-none transition-all duration-300" placeholder="seu@email.com">
+                </div>
+                <button type="submit" id="submit-btn" class="w-full bg-accent text-white py-4 rounded-sm text-sm tracking-wide hover:opacity-90 transition-opacity mt-6">
+                    Descobrir meu presente
+                </button>
+            </form>
+            
+            <!-- Loading -->
+            <div id="loading" class="hidden py-8">
+                <div class="loader"></div>
+                <p class="text-lg font-light opacity-70 mt-4">Calculando seu presente...</p>
+            </div>
+            
+            <!-- Result -->
+            <div id="result" class="hidden py-8">
+                <h2 class="text-3xl font-semibold mb-2">Parabéns! 🎉</h2>
+                <p class="text-xl mb-4">Você ganhou <span id="fotos-ganhas" class="accent-color font-bold text-3xl">X</span> fotos!</p>
+                <p class="opacity-70 text-sm mb-6">Clique abaixo para reservar sua data:</p>
+                <a href="https://wa.me/5541999605872?text=Olá%20Daiane!%20Ganhei%20X%20fotos%20no%20presente%20da%20Rua%20do%20Outono%20e%20gostaria%20de%20reservar%20minha%20data!" target="_blank" class="inline-block bg-green-600 text-white px-8 py-4 rounded-full text-sm tracking-wide">
+                    Reservar via WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center opacity-40 text-xs tracking-widest uppercase">
+        &copy; 2026 Daiane Borcath
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const form = document.getElementById('lead-form');
+        const swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 1,
+                },
+                1024: {
+                    slidesPerView: 1,
+                },
+            },
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Form submission
+        const submitBtn = document.getElementById('submit-btn');
+        const nomeInput = document.getElementById('nome');
+        const whatsappInput = document.getElementById('whatsapp');
+        const emailInput = document.getElementById('email');
+        
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbySLlEvdsroR4DmwS1hYbfYBz-u7HKM88l7Qu4SPdgzh2U9bVwgrzDxJompyXzz1IwC-w/exec';
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Calculando...';
+            
+            // Captura os dados
+            const nome = nomeInput.value;
+            const whatsapp = whatsappInput.value;
+            const email = emailInput.value;
+
+            // Envio via Google Apps Script (Funciona local e online)
+            const params = new URLSearchParams();
+            params.append('nome', nome);
+            params.append('whatsapp', whatsapp);
+            params.append('email', email);
+            
+            const finalUrl = GOOGLE_SCRIPT_URL + '?' + params.toString();
+
+            // Dispara a requisição (modo no-cors para evitar bloqueios do Google)
+            fetch(finalUrl, {
+                method: 'GET',
+                mode: 'no-cors'
+            }).catch(err => console.log('Envio em background'));
+            
+            // Show loading
+            setTimeout(() => {
+                form.classList.add('hidden');
+                document.getElementById('loading').classList.remove('hidden');
+                
+                // Calculate fotos (80% = 5, 20% = 4 ou 6)
+                setTimeout(() => {
+                    document.getElementById('loading').classList.add('hidden');
+                    const result = document.getElementById('result');
+                    result.classList.remove('hidden');
+                    
+                    // Lottery logic
+                    const rand = Math.random();
+                    const fotos = rand < 0.8 ? 5 : (Math.random() < 0.5 ? 4 : 6);
+                    
+                    document.getElementById('fotos-ganhas').innerText = fotos;
+                    
+                    // Update WhatsApp link
+                    const waLink = result.querySelector('a');
+                    waLink.href = 'https://wa.me/5541999605872?text=Olá Daiane! Ganhei ' + fotos + ' fotos no presente da Rua do Outono e gostaria de reservar minha data!';
+                }, 1500);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
