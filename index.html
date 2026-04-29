@@ -353,6 +353,14 @@
             localStorage.setItem('visited_daianeborcath_outono', 'true');
             fetch('https://abacus.jasoncameron.dev/hit/daianeborcath/outono').catch(()=>console.log('hit'));
         }
+
+        // Contador de acessos diário (evita F5 no mesmo dia)
+        const today = new Date().toISOString().split('T')[0];
+        const dailyKey = 'visited_daianeborcath_outono_' + today;
+        if (!localStorage.getItem(dailyKey)) {
+            localStorage.setItem(dailyKey, 'true');
+            fetch('https://abacus.jasoncameron.dev/hit/daianeborcath/outono_' + today).catch(()=>console.log('hit daily'));
+        }
     </script>
 </body>
 </html>
