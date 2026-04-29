@@ -171,6 +171,50 @@
             margin-top: 6px;
             letter-spacing: 0.05em;
         }
+        /* FAQ Accordion */
+        .faq-item {
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .faq-question {
+            width: 100%;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+        .faq-question h4 {
+            font-size: 15px;
+            font-weight: 500;
+            opacity: 0.8;
+            padding-right: 20px;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .faq-answer p {
+            padding-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.6;
+            font-weight: 300;
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+            opacity: 0.3;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -326,8 +370,65 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="px-6 py-24 max-w-xl mx-auto border-t border-gray-50">
+        <p class="serif italic text-sm tracking-widest uppercase opacity-70 text-center mb-12">Dúvidas Frequentes</p>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <h4>É realmente gratuito? Tem alguma taxa escondida?</h4>
+                    <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Sim, é um presente real! Você não paga nada pela sessão fotográfica e ganha 5 fotos digitais totalmente editadas. Meu objetivo com essa campanha é que novas famílias conheçam meu trabalho. Não há letras miúdas.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <h4>Quem pode participar do ensaio?</h4>
+                    <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>O presente é pensado para famílias. Podem participar o casal, a gestante ou a mamãe com seus filhos. O importante é registrar a conexão de vocês nesse cenário lindo!</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <h4>Quanto tempo dura a sessão?</h4>
+                    <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>As sessões são leves e dinâmicas, durando cerca de 30 minutos. É o tempo perfeito para capturarmos momentos espontâneos sem cansar as crianças.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <h4>E se eu quiser mais do que as 5 fotos?</h4>
+                    <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Fique à vontade! Após o ensaio, você receberá uma galeria para escolher suas 5 favoritas. Se você amar o resultado e quiser adquirir extras, ofereço pacotes especiais, mas é totalmente opcional.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <h4>O que acontece se chover?</h4>
+                    <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Como o ensaio é ao ar livre, dependemos do clima. Caso chova, entrarei em contato para reagendarmos para a data mais próxima possível, garantindo a luz linda do outono.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Offer Section -->
-    <section id="oferta" class="px-6 py-24 text-center max-w-xl mx-auto">
+    <section id="oferta" class="px-6 py-24 text-center max-w-xl mx-auto border-t border-gray-50">
         <div id="form-container" class="fade-in">
             <h2 class="text-3xl font-semibold mb-4">Preencha e ganhe 5 fotos editadas e tratadas na Rua do Outono</h2>
             <div class="mb-4 inline-block bg-red-100 text-red-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-tighter">
@@ -510,6 +611,14 @@
                 stickyCta.classList.remove('visible');
             }
         }, { passive: true });
+
+        // FAQ Accordion logic
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
     </script>
 </body>
 </html>
