@@ -272,7 +272,6 @@
 
     <footer class="py-12 text-center opacity-40 text-xs tracking-widest uppercase flex flex-col items-center justify-center gap-4">
         &copy; 2026 Daiane Borcath
-        <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fdaianeborcathfotografia.com.br&countColor=%23b35a44" alt="Contador de Acessos" style="display: none;" />
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -348,6 +347,12 @@
                 }, 800);
             }, 300);
         });
+
+        // Contador de acessos único (evita F5)
+        if (!localStorage.getItem('visited_daianeborcath_outono')) {
+            localStorage.setItem('visited_daianeborcath_outono', 'true');
+            new Image().src = 'https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fdaianeborcathfotografia.com.br';
+        }
     </script>
 </body>
 </html>
