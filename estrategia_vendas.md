@@ -12,7 +12,7 @@ Esta estratégia foi desenhada para transformar leads de tráfego pago em client
 ## 🛠️ O Fluxo de Conversão (Funil de WhatsApp)
 
 ### Fase 1: Acolhimento e Conexão (Quebra de Gelo)
-*O lead chega: "Olá Daiane! Ganhei X fotos no presente da Rua do Outono..."*
+*O lead chega: "Olá Daiane! Ganhei 5 fotos no presente da Rua do Outono..."*
 
 **Script:**
 > "Oiii [Nome]! 💕 Que alegria receber você por aqui!
@@ -60,7 +60,7 @@ Esta estratégia foi desenhada para transformar leads de tráfego pago em client
 **Script:**
 > "Perfeito! Dia [Data] às [Hora] está reservadíssimo para vocês! 🎉
 > 
-> [Nome], agora que a data está garantida, deixa eu te dar uma dica... esse seu presente de [X] fotos é maravilhoso para começar sua coleção de memórias! 💛
+> [Nome], agora que a data está garantida, deixa eu te dar uma dica... esse seu presente de 5 fotos é maravilhoso para começar sua coleção de memórias! 💛
 > 
 > Mas, como a gente vai estar naquele cenário mágico, muitas mamães preferem migrar para a **Experiência Completa**. 
 > 
