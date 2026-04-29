@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métricas | Rua do Outono</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfc;
+            color: #333333;
+        }
+        h1, h2, .serif { font-family: 'Playfair Display', serif; }
+        .accent-color { color: #b35a44; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex items-center justify-center p-6">
+    <div class="bg-white p-10 rounded-xl shadow-xl max-w-sm w-full text-center border border-gray-100">
+        <p class="serif italic text-sm tracking-widest uppercase opacity-70 mb-8">Painel de Métricas</p>
+        
+        <h2 class="text-xl font-light mb-2">Visitantes Únicos</h2>
+        <div class="text-6xl font-bold accent-color mb-8 serif" id="counter">...</div>
+        
+        <button onclick="carregarMetricas()" class="w-full bg-stone-100 text-stone-600 hover:bg-stone-200 py-3 rounded-md text-sm tracking-wide transition-all duration-300 flex justify-center items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            Atualizar Agora
+        </button>
+        <p class="text-[10px] opacity-40 mt-6">Acessar essa página não aumenta o contador.</p>
+    </div>
+
+    <script>
+        async function carregarMetricas() {
+            const counterEl = document.getElementById('counter');
+            counterEl.style.opacity = '0.5';
+            try {
+                const res = await fetch('https://abacus.jasoncameron.dev/get/daianeborcath/outono');
+                const data = await res.json();
+                counterEl.innerText = data.value || 0;
+            } catch(e) {
+                counterEl.innerText = 'Erro';
+            }
+            counterEl.style.opacity = '1';
+        }
+        
+        // Carrega ao abrir a tela
+        carregarMetricas();
+    </script>
+</body>
+</html>

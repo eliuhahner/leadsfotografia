@@ -351,7 +351,7 @@
         // Contador de acessos único (evita F5)
         if (!localStorage.getItem('visited_daianeborcath_outono')) {
             localStorage.setItem('visited_daianeborcath_outono', 'true');
-            new Image().src = 'https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fdaianeborcathfotografia.com.br';
+            fetch('https://abacus.jasoncameron.dev/hit/daianeborcath/outono').catch(()=>console.log('hit'));
         }
     </script>
 </body>
