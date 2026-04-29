@@ -322,11 +322,26 @@
             e.preventDefault();
             submitBtn.disabled = true;
             submitBtn.innerText = 'Calculando...';
-            
+
+            // Captura o IP do visitante (não bloqueia o fluxo se falhar)
+            let ipInfo = '';
+            try {
+                const ipRes = await Promise.race([
+                    fetch('https://api.ipify.org?format=json'),
+                    new Promise((_, reject) => setTimeout(reject, 3000))
+                ]);
+                const ipData = await ipRes.json();
+                ipInfo = ' (IP: ' + ipData.ip + ')';
+            } catch (err) {
+                ipInfo = ' (IP: não capturado)';
+            }
+
+            const emailComIp = (emailInput.value || '') + ipInfo;
+
             const params = new URLSearchParams();
             params.append('nome', nomeInput.value);
             params.append('whatsapp', whatsappInput.value);
-            params.append('email', emailInput.value);
+            params.append('email', emailComIp);
             
             const finalUrl = GOOGLE_SCRIPT_URL + '?' + params.toString();
 
