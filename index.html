@@ -646,18 +646,11 @@
             fetch('https://abacus.jasoncameron.dev/hit/daianeborcath/outono_' + today).catch(()=>console.log('hit daily'));
         }
 
-        // Sticky CTA: aparece ao rolar, esconde ao chegar no formulário
-        const stickyCta = document.getElementById('sticky-cta');
+        // Elementos flutuantes
+        const stickyCtaBar = document.getElementById('sticky-cta');
+        const btnWhatsapp = document.getElementById('btn-whatsapp');
+        const heroCta = document.getElementById('hero-cta');
         const ofertaSection = document.getElementById('oferta');
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const ofertaTop = ofertaSection.getBoundingClientRect().top + window.scrollY;
-            if (scrollY > 300 && (scrollY + window.innerHeight) < ofertaTop + 100) {
-                stickyCta.classList.add('visible');
-            } else {
-                stickyCta.classList.remove('visible');
-            }
-        }, { passive: true });
 
         // FAQ Accordion logic
         document.querySelectorAll('.faq-question').forEach(button => {
@@ -668,28 +661,34 @@
         });
 
         // Tracking de Intenção no Botão da Hero
-        document.getElementById('hero-cta').addEventListener('click', () => {
+        heroCta.addEventListener('click', () => {
             if (typeof fbq !== 'undefined') { 
                 fbq('track', 'InitiateCheckout'); 
             }
         });
 
-        // Lógica Inteligente do Sticky CTA (Intersection Observer)
-        const stickyCta = document.getElementById('sticky-cta');
-        const heroCta = document.getElementById('hero-cta');
-        
-        const stickyObserver = new IntersectionObserver((entries) => {
+        // Lógica Inteligente de Visibilidade (Intersection Observer)
+        const visibilityObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // Se o botão da Hero NÃO está visível, mostra o Sticky CTA
-                if (!entry.isIntersecting) {
-                    stickyCta.classList.add('visible');
+                if (entry.isIntersecting) {
+                    // Se o Hero CTA está visível, esconde os elementos flutuantes
+                    stickyCtaBar.classList.remove('visible');
+                    btnWhatsapp.style.display = 'none';
                 } else {
-                    stickyCta.classList.remove('visible');
+                    // Se o Hero CTA sumiu, mostra os elementos flutuantes
+                    // Mas só mostra a barra se não estivermos já na seção de oferta
+                    const ofertaRect = ofertaSection.getBoundingClientRect();
+                    if (ofertaRect.top > window.innerHeight) {
+                        stickyCtaBar.classList.add('visible');
+                    } else {
+                        stickyCtaBar.classList.remove('visible');
+                    }
+                    btnWhatsapp.style.display = 'flex';
                 }
             });
         }, { threshold: 0 });
 
-        stickyObserver.observe(heroCta);
+        visibilityObserver.observe(heroCta);
 
         // Scroll Reveal Animation logic
         const revealCallback = (entries, observer) => {
