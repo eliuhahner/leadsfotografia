@@ -267,17 +267,17 @@
     </div>
 
     <!-- Header -->
-    <header class="py-12 px-6 text-center">
+    <header class="py-6 px-6 text-center border-b border-gray-50">
         <p class="serif italic text-lg tracking-widest uppercase opacity-70">Daiane Borcath</p>
         <p class="text-[10px] tracking-[0.3em] uppercase opacity-40 mt-1 font-light">Fotografia de Afeto</p>
     </header>
-
+ 
     <!-- Hero Section -->
-    <section class="px-6 pt-12 pb-20 md:pt-24 md:pb-32 text-center max-w-3xl mx-auto min-h-[75dvh] flex flex-col justify-center bg-white">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-8">
+    <section class="px-6 pt-10 pb-16 md:pt-24 md:pb-32 text-center max-w-3xl mx-auto min-h-[70dvh] flex flex-col justify-center bg-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
             Seu ensaio na Rua do Outono com <span class="accent-color italic">5 fotos de presente.</span>
         </h1>
-        <p class="text-lg opacity-80 font-light leading-relaxed mb-12">
+        <p class="text-lg opacity-80 font-light leading-relaxed mb-8">
             A beleza da estação em registros inesquecíveis. Vagas gratuitas e limitadas para Maio.
         </p>
         <div>
@@ -292,9 +292,9 @@
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </div>
     </section>
-
+ 
     <!-- SECTION 1: O PORQUÊ (Quebra de Ceticismo) -->
-    <section class="px-6 py-20 bg-stone-50 reveal">
+    <section class="px-6 py-20 bg-stone-50">
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div class="w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
                 <img src="assets/img/daiane.jpg" alt="Daiane Borcath" class="w-full h-full object-cover rounded-full border-4 border-white shadow-md" loading="lazy">
@@ -698,7 +698,7 @@
                 }
             });
         };
-        const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.1 });
+        const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
 </body>
