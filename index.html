@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -281,7 +281,7 @@
             A beleza da estação em registros inesquecíveis. Vagas gratuitas e limitadas para Maio.
         </p>
         <div>
-            <a href="#oferta" class="inline-block bg-accent text-white px-10 py-4 rounded-full text-sm tracking-wide hover:opacity-90 transition-all hover:scale-105 duration-300 shadow-lg">
+            <a href="#oferta" id="hero-cta" class="inline-block w-full max-w-xs bg-accent text-white px-10 py-5 rounded-xl text-sm tracking-widest hover:opacity-90 transition-all hover:scale-105 active:scale-95 duration-200 shadow-xl font-bold uppercase">
                 Quero minhas 5 fotos
             </a>
         </div>
@@ -472,7 +472,7 @@
     </section>
 
     <!-- Offer Section -->
-    <section id="oferta" class="px-6 py-24 text-center max-w-2xl mx-auto reveal bg-stone-50">
+    <section id="oferta" class="px-6 py-24 text-center max-w-2xl mx-auto reveal bg-stone-50 scroll-mt-24 md:scroll-mt-32">
         <div id="form-container" class="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-stone-100 fade-in">
             <h2 class="text-3xl font-semibold mb-4 serif">Preencha e ganhe 5 fotos na Rua do Outono</h2>
             <div class="mb-6 inline-block bg-red-50 text-red-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-red-100">
@@ -666,6 +666,30 @@
                 faqItem.classList.toggle('active');
             });
         });
+
+        // Tracking de Intenção no Botão da Hero
+        document.getElementById('hero-cta').addEventListener('click', () => {
+            if (typeof fbq !== 'undefined') { 
+                fbq('track', 'InitiateCheckout'); 
+            }
+        });
+
+        // Lógica Inteligente do Sticky CTA (Intersection Observer)
+        const stickyCta = document.getElementById('sticky-cta');
+        const heroCta = document.getElementById('hero-cta');
+        
+        const stickyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Se o botão da Hero NÃO está visível, mostra o Sticky CTA
+                if (!entry.isIntersecting) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0 });
+
+        stickyObserver.observe(heroCta);
 
         // Scroll Reveal Animation logic
         const revealCallback = (entries, observer) => {
