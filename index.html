@@ -86,9 +86,60 @@
         .swiper-pagination-bullet-active {
             background: #b35a44 !important;
         }
+
+        /* Sticky CTA Bar */
+        #sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0,0,0,0.06);
+            padding: 12px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+        }
+        #sticky-cta.visible {
+            transform: translateY(0);
+        }
+        #sticky-cta a {
+            display: block;
+            background: #b35a44;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(179,90,68,0.4);
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        #sticky-cta a:active {
+            opacity: 0.9;
+            transform: scale(0.98);
+        }
+        #sticky-cta p {
+            text-align: center;
+            font-size: 10px;
+            color: #999;
+            margin-top: 6px;
+            letter-spacing: 0.05em;
+        }
     </style>
 </head>
 <body class="antialiased">
+
+    <!-- Sticky CTA Bar -->
+    <div id="sticky-cta">
+        <a href="#oferta">🍂 Quero minhas 5 fotos grátis</a>
+        <p>⚡ Vagas limitadas para Maio · Totalmente gratuito</p>
+    </div>
 
     <!-- Header -->
     <header class="py-12 px-6 text-center">
@@ -395,6 +446,19 @@
             localStorage.setItem(dailyKey, 'true');
             fetch('https://abacus.jasoncameron.dev/hit/daianeborcath/outono_' + today).catch(()=>console.log('hit daily'));
         }
+
+        // Sticky CTA: aparece ao rolar, esconde ao chegar no formulário
+        const stickyCta = document.getElementById('sticky-cta');
+        const ofertaSection = document.getElementById('oferta');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const ofertaTop = ofertaSection.getBoundingClientRect().top + window.scrollY;
+            if (scrollY > 300 && (scrollY + window.innerHeight) < ofertaTop + 100) {
+                stickyCta.classList.add('visible');
+            } else {
+                stickyCta.classList.remove('visible');
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>
