@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel Objeções — SÓ TEXTO — Daiane Borcath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold:     #D4AF37;
+            --gold-dim: rgba(212,175,55,0.18);
+            --bg-dark:  #0F0D0B;
+            --bg-card:  #141210;
+            --bg-alt:   #181410;
+            --white:    #FFFFFF;
+            --off:      rgba(255,255,255,0.70);
+            --muted:    rgba(255,255,255,0.35);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            padding: 40px;
+        }
+
+        .slides-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* BASE SLIDE                                      */
+        /* ══════════════════════════════════════════════ */
+        .slide {
+            width: 1080px;
+            height: 1350px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--bg-dark);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Variantes de fundo por slide */
+        .slide.bg-a { background: #0F0D0B; }
+        .slide.bg-b { background: #110E0C; }
+        .slide.bg-c { background: #100D0B; }
+
+        /* Textura sutil (borda superior com gradiente dourado) */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(212,175,55,0.5) 30%,
+                rgba(212,175,55,0.9) 50%,
+                rgba(212,175,55,0.5) 70%,
+                transparent 100%);
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* ELEMENTOS DECORATIVOS                          */
+        /* ══════════════════════════════════════════════ */
+        .slide-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px; font-weight: 300;
+            color: var(--muted);
+            letter-spacing: 4px;
+        }
+        .brand-mark {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px; font-weight: 400;
+            color: var(--muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .gold-line {
+            width: 52px; height: 1px;
+            background: var(--gold);
+            opacity: 0.75;
+        }
+        .gold-line.long { width: 80px; }
+        .gold-line.centered { margin: 0 auto; }
+        .gold-line.right-align { margin-left: auto; }
+
+        .gold-corner {
+            position: absolute;
+            width: 32px; height: 32px;
+            opacity: 0.40;
+        }
+        .gold-corner.tl {
+            top: 40px; left: 52px;
+            border-top: 1px solid var(--gold);
+            border-left: 1px solid var(--gold);
+        }
+        .gold-corner.tr {
+            top: 40px; right: 52px;
+            border-top: 1px solid var(--gold);
+            border-right: 1px solid var(--gold);
+        }
+        .gold-corner.bl {
+            bottom: 40px; left: 52px;
+            border-bottom: 1px solid var(--gold);
+            border-left: 1px solid var(--gold);
+        }
+        .gold-corner.br {
+            bottom: 40px; right: 52px;
+            border-bottom: 1px solid var(--gold);
+            border-right: 1px solid var(--gold);
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* HEADER / FOOTER da SLIDE                      */
+        /* ══════════════════════════════════════════════ */
+        .slide-header {
+            padding: 52px 72px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+        .slide-footer {
+            padding: 0 72px 52px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* ÁREA CENTRAL DE CONTEÚDO                      */
+        /* ══════════════════════════════════════════════ */
+        .slide-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 96px;
+            position: relative;
+            z-index: 10;
+        }
+        .slide-body.align-left   { align-items: flex-start; text-align: left; }
+        .slide-body.align-center { align-items: center;     text-align: center; }
+        .slide-body.align-right  { align-items: flex-end;   text-align: right; }
+
+        /* ══════════════════════════════════════════════ */
+        /* TIPOGRAFIAS POR TIPO DE SLIDE                 */
+        /* ══════════════════════════════════════════════ */
+
+        /* — CAPA — */
+        .t-eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 400;
+            color: var(--gold);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+        .t-capa-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px; font-weight: 700;
+            color: var(--white);
+            line-height: 1.06;
+            letter-spacing: -1.5px;
+            margin-bottom: 32px;
+        }
+        .t-capa-sub {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px; font-weight: 400;
+            font-style: italic;
+            color: var(--off);
+            line-height: 1.45;
+        }
+
+        /* — OBJEÇÃO — */
+        .t-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px; font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .t-obj-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 120px; font-weight: 700;
+            color: var(--gold-dim);
+            line-height: 0.85;
+            letter-spacing: -6px;
+            margin-bottom: -12px;
+            position: relative; z-index: -1;
+            /* Número grande decorativo atrás do título */
+        }
+        .t-obj-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px; font-weight: 700;
+            color: var(--white);
+            line-height: 1.10;
+            letter-spacing: -0.8px;
+            margin-bottom: 32px;
+        }
+        .t-obj-body {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px; font-weight: 400;
+            font-style: italic;
+            color: var(--off);
+            line-height: 1.55;
+        }
+
+        /* — ENCERRAMENTO — */
+        .t-close-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px; font-weight: 700;
+            color: var(--white);
+            line-height: 1.12;
+            letter-spacing: -0.8px;
+            margin-bottom: 32px;
+        }
+        .t-close-body {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px; font-weight: 400;
+            font-style: italic;
+            color: var(--off);
+            line-height: 1.60;
+            margin-bottom: 44px;
+        }
+        .cta-badge {
+            display: inline-block;
+            padding: 14px 40px;
+            border: 1px solid var(--gold);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px; font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        /* ══════════════════════════════════════════════ */
+        /* ELEMENTOS GRÁFICOS ESPECIAIS                  */
+        /* ══════════════════════════════════════════════ */
+        /* Bloco de destaque para a frase da objeção */
+        .objection-quote {
+            background: rgba(212,175,55,0.06);
+            border-left: 2px solid rgba(212,175,55,0.50);
+            padding: 24px 32px;
+            margin-bottom: 32px;
+        }
+        .objection-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px; font-weight: 600;
+            color: var(--white);
+            line-height: 1.18;
+            letter-spacing: -0.3px;
+        }
+
+        /* Linha divisória interna */
+        .inner-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255,255,255,0.06);
+            margin: 36px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="slides-container">
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 01 — CAPA                               -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-a" id="slide-01">
+        <div class="gold-corner tl"></div>
+        <div class="gold-corner tr"></div>
+        <div class="gold-corner bl"></div>
+        <div class="gold-corner br"></div>
+
+        <div class="slide-header">
+            <span class="brand-mark">Daiane Borcath</span>
+            <span class="slide-number">01 / 12</span>
+        </div>
+
+        <div class="slide-body align-center">
+            <p class="t-eyebrow">Fotografia · Curitiba</p>
+            <div class="gold-line long centered" style="margin-bottom:36px;"></div>
+            <h1 class="t-capa-title">10 coisas que muitas mães pensam antes de agendar a sessão...</h1>
+            <div class="inner-divider"></div>
+            <p class="t-capa-sub">E talvez você também esteja pensando</p>
+        </div>
+
+        <div class="slide-footer">
+            <div style="width:40px; height:1px; background:rgba(212,175,55,0.3);"></div>
+            <div style="width:40px; height:1px; background:rgba(212,175,55,0.3);"></div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 02 — Comportamento dos filhos           -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-b" id="slide-02">
+        <div class="slide-header">
+            <span class="t-label">01 · comportamento</span>
+            <span class="slide-number">02 / 12</span>
+        </div>
+
+        <div class="slide-body align-left">
+            <div class="gold-line" style="margin-bottom:28px;"></div>
+            <div class="objection-quote">
+                <p>"Meu filho não vai colaborar"</p>
+            </div>
+            <p class="t-obj-body">E quem disse que precisa? A sessão não depende de criança parada, olhando pra câmera e sorrindo igual propaganda. O que importa aqui é registrar vocês de verdade.</p>
+        </div>
+
+        <div class="slide-footer">
+            <span class="brand-mark">Daiane Borcath</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 03 — Autoestima                         -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-c" id="slide-03">
+        <div class="slide-header">
+            <span class="slide-number">03 / 12</span>
+            <span class="t-label">02 · autoestima</span>
+        </div>
+
+        <div class="slide-body align-right">
+            <div class="gold-line right-align" style="margin-bottom:28px;"></div>
+            <div class="objection-quote" style="border-left:none; border-right:2px solid rgba(212,175,55,0.50); text-align:right;">
+                <p>"Não estou me sentindo bonita pra fotografar"</p>
+            </div>
+            <p class="t-obj-body">Justamente por isso essas fotos importam. Você não precisa esperar se sentir perfeita pra viver e guardar esse momento. Seus filhos não vão lembrar se seu cabelo estava impecável. Vão lembrar de você ali com eles.</p>
+        </div>
+
+        <div class="slide-footer" style="justify-content:flex-end;">
+            <span class="brand-mark">Daiane Borcath</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 04 — Momento ideal                      -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-a" id="slide-04">
+        <div class="slide-header">
+            <span class="t-label">03 · o momento certo</span>
+            <span class="slide-number">04 / 12</span>
+        </div>
+
+        <div class="slide-body align-left">
+            <div class="gold-line" style="margin-bottom:28px;"></div>
+            <div class="objection-quote">
+                <p>"Acho que meu filho é muito pequeno ou muito grande pra fazer"</p>
+            </div>
+            <p class="t-obj-body">Não existe fase errada pra ter foto com quem você ama. Cada idade tem um jeito, uma energia, uma memória diferente. O erro é achar que depois vai ser melhor — e deixar passar.</p>
+        </div>
+
+        <div class="slide-footer">
+            <span class="brand-mark">Daiane Borcath</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 05 — Fotogenia                          -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-b" id="slide-05">
+        <div class="slide-header">
+            <span class="slide-number">05 / 12</span>
+            <span class="t-label">04 · fotogenia</span>
+        </div>
+
+        <div class="slide-body align-center">
+            <div class="gold-line centered" style="margin-bottom:28px;"></div>
+            <div class="objection-quote" style="border-left:none; border-top:1px solid rgba(212,175,55,0.35); border-bottom:1px solid rgba(212,175,55,0.35); border-right:none; text-align:center; padding:28px 24px;">
+                <p>"Eu quase nunca apareço bem em foto"</p>
+            </div>
+            <p class="t-obj-body" style="text-align:center;">Talvez o problema nunca tenha sido você. Talvez só tenha faltado alguém te fotografar com verdade, cuidado e intenção. Posar nunca foi o ponto.</p>
+        </div>
+
+        <div class="slide-footer" style="justify-content:center;">
+            <span class="brand-mark">Daiane Borcath</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 06 — Falta de tempo                     -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-c" id="slide-06">
+        <div class="slide-header">
+            <span class="t-label">05 · tempo</span>
+            <span class="slide-number">06 / 12</span>
+        </div>
+
+        <div class="slide-body align-left">
+            <div class="gold-line" style="margin-bottom:28px;"></div>
+            <div class="objection-quote">
+                <p>"Vai ser corrido, eu não tenho tempo para isso"</p>
+            </div>
+            <p class="t-obj-body">A rotina é puxada mesmo. Mas justamente por isso essa sessão faz sentido. Porque o tempo passa rápido demais e a mãe é quem menos aparece nas memórias da família.</p>
+        </div>
+
+        <div class="slide-footer">
+            <span class="brand-mark">Daiane Borcath</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 07 — Insegurança financeira             -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-a" id="slide-07">
+        <div class="slide-header">
+            <span class="slide-number">07 / 12</span>
+            <span class="t-label">06 · investimento</span>
+        </div>
+
+        <div class="slide-body align-right">
+            <div class="gold-line right-align" style="margin-bottom:28px;"></div>
+            <div class="objection-quote" style="border-left:none; border-right:2px solid rgba(212,175,55,0.50); text-align:right;">
+                <p>"Tenho medo de gastar mais do que posso"</p>
+            </div>
+            <p class="t-obj-body">Essa preocupação é super normal. Por isso é importante entender direitinho como funciona, os lotes e os horários. Quando tudo é explicado com clareza, fica muito mais fácil decidir.</p>
+        </div>
+
+        <div class="slide-footer" style="justify-content:flex-end;">
+            <span class="brand-mark">Daiane Borcath</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 08 — Valor emocional                    -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-b" id="slide-08">
+        <div class="slide-header">
+            <span class="t-label">07 · vale a pena?</span>
+            <span class="slide-number">08 / 12</span>
+        </div>
+
+        <div class="slide-body align-left">
+            <div class="gold-line" style="margin-bottom:28px;"></div>
+            <div class="objection-quote">
+                <p>"Será que vale a pena mesmo?"</p>
+            </div>
+            <p class="t-obj-body">Vale quando você entende que não é só uma foto bonita. É um registro seu com seus filhos numa fase que não volta mais. Tem coisa que, quando passa, não tem como refazer do mesmo jeito.</p>
+        </div>
+
+        <div class="slide-footer">
+            <span class="brand-mark">Daiane Borcath</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 09 — Personalidade da criança           -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-c" id="slide-09">
+        <div class="slide-header">
+            <span class="slide-number">09 / 12</span>
+            <span class="t-label">08 · personalidade</span>
+        </div>
+
+        <div class="slide-body align-right">
+            <div class="gold-line right-align" style="margin-bottom:28px;"></div>
+            <div class="objection-quote" style="border-left:none; border-right:2px solid rgba(212,175,55,0.50); text-align:right;">
+                <p>"Meu filho é tímido, agitado ou não para quieto"</p>
+            </div>
+            <p class="t-obj-body">Ótimo. Ele pode ser exatamente ele. A sessão não precisa engessar seu filho pra funcionar. Na verdade, é justamente daí que saem as fotos mais vivas e mais verdadeiras.</p>
+        </div>
+
+        <div class="slide-footer" style="justify-content:flex-end;">
+            <span class="brand-mark">Daiane Borcath</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 10 — O que vestir                       -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-a" id="slide-10">
+        <div class="slide-header">
+            <span class="t-label">09 · o que vestir</span>
+            <span class="slide-number">10 / 12</span>
+        </div>
+
+        <div class="slide-body align-left">
+            <div class="gold-line" style="margin-bottom:28px;"></div>
+            <div class="objection-quote">
+                <p>"Não faço ideia do que vestir"</p>
+            </div>
+            <p class="t-obj-body">Isso trava muita gente mesmo. Mas não precisa complicar. Com uma orientação simples, já dá pra escolher roupas que funcionam bem e deixam tudo bonito sem esforço.</p>
+        </div>
+
+        <div class="slide-footer">
+            <span class="brand-mark">Daiane Borcath</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 11 — Procrastinação                     -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-b" id="slide-11">
+        <div class="slide-header">
+            <span class="slide-number">11 / 12</span>
+            <span class="t-label">10 · procrastinação</span>
+        </div>
+
+        <div class="slide-body align-center">
+            <div class="gold-line centered" style="margin-bottom:28px;"></div>
+            <div class="objection-quote" style="border-left:none; border-top:1px solid rgba(212,175,55,0.35); border-bottom:1px solid rgba(212,175,55,0.35); text-align:center; padding:28px 24px;">
+                <p>"Depois eu vejo isso"</p>
+            </div>
+            <p class="t-obj-body" style="text-align:center;">Essa é a que mais faz gente perder horário bom. "Depois" normalmente vira correria, agenda ruim ou vontade adiada. Quando faz sentido, o melhor é não deixar pra última hora.</p>
+        </div>
+
+        <div class="slide-footer" style="justify-content:center;">
+            <span class="brand-mark">Daiane Borcath</span>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- SLIDE 12 — ENCERRAMENTO + CTA                 -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div class="slide bg-c" id="slide-12">
+        <div class="gold-corner tl"></div>
+        <div class="gold-corner tr"></div>
+        <div class="gold-corner bl"></div>
+        <div class="gold-corner br"></div>
+
+        <div class="slide-header">
+            <span class="brand-mark">Daiane Borcath</span>
+            <span class="slide-number">12 / 12</span>
+        </div>
+
+        <div class="slide-body align-center">
+            <div class="gold-line long centered" style="margin-bottom:40px;"></div>
+            <p class="t-close-title">Se alguma dessas passou pela sua cabeça, você não está sozinha.</p>
+            <div class="inner-divider"></div>
+            <p class="t-close-body">E talvez justamente por isso essa sessão faça tanto sentido. Porque mãe quase sempre deixa ela por último. Dessa vez, talvez seja hora de viver isso também.</p>
+            <div class="cta-badge">Agenda aberta · Link na bio</div>
+        </div>
+
+        <div class="slide-footer" style="justify-content:center;">
+            <div style="width:40px; height:1px; background:rgba(212,175,55,0.3);"></div>
+            <div style="width:40px; height:1px; background:rgba(212,175,55,0.3);"></div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
