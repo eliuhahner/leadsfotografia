@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Cores Premium - Rua do Outono</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --cream: #F5F5DC;
+            --white: #FFFFFF;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --dark-glass: rgba(0, 0, 0, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #000;
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .main-container {
+            width: 1080px;
+            height: 1350px;
+            position: relative;
+            background: #121212;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 50px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+        }
+
+        /* Subtle Autumn Background Pattern */
+        .main-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 0% 0%, rgba(179, 92, 68, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(227, 180, 72, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(180deg, #fff 0%, #ccc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            height: 900px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background: var(--dark-glass);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+
+        .card-image-wrapper {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            margin: 25px;
+            border-radius: 35px;
+            background: #222;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 0 40px 50px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 12px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .card-subtitle {
+            font-size: 17px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 10px;
+        }
+
+        .color-dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .color-dot:hover {
+            transform: scale(1.2);
+            border-color: #fff;
+        }
+
+        .color-dot::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -32px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+            opacity: 0.7;
+            font-weight: 600;
+        }
+
+        /* Specific Colors */
+        .bg-navy { background-color: #1D2751; }
+        .bg-moss { background-color: #4A5D23; }
+        .bg-denim { background-color: #2F3E46; }
+        
+        .bg-offwhite { background-color: #F5F5F5; }
+        .bg-creme { background-color: #E3D9C6; }
+        .bg-beige { background-color: #C5A07E; }
+
+        .bg-wine { background-color: #631E26; }
+        .bg-mustard { background-color: #C69320; }
+        .bg-terracotta { background-color: #9B4731; }
+
+        .watermark {
+            position: absolute;
+            bottom: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 15px;
+            letter-spacing: 6px;
+            opacity: 0.3;
+            text-transform: uppercase;
+            font-weight: 300;
+            z-index: 10;
+        }
+
+        .corner-accent {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            color: var(--gold);
+            font-size: 28px;
+            opacity: 0.5;
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="corner-accent">✧</div>
+        
+        <header class="header">
+            <h1>Guia de Cores</h1>
+            <p>Rua do Outono • 2026</p>
+        </header>
+
+        <div class="bento-grid">
+            <!-- PALETA DE CONTRASTE -->
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="couple_autumn_contrast_1777676573490.png" alt="Paleta de Contraste">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Contraste</h2>
+                    <p class="card-subtitle">Destaque absoluto em relação ao cenário</p>
+                    <div class="color-palette">
+                        <div class="color-dot bg-navy" data-label="Navy"></div>
+                        <div class="color-dot bg-moss" data-label="Musgo"></div>
+                        <div class="color-dot bg-denim" data-label="Jeans"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEUTROS & ILUMINADOS -->
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="mother_child_autumn_neutrals_1777676587526.png" alt="Neutros & Iluminados">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Neutros</h2>
+                    <p class="card-subtitle">O clássico atemporal que ilumina o olhar</p>
+                    <div class="color-palette">
+                        <div class="color-dot bg-offwhite" data-label="Off-White"></div>
+                        <div class="color-dot bg-creme" data-label="Creme"></div>
+                        <div class="color-dot bg-beige" data-label="Bege"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TONS TERROSOS -->
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="family_autumn_earth_tones_1777676603587.png" alt="Tons Terrosos">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">Terrosos</h2>
+                    <p class="card-subtitle">Harmonia orgânica com as cores da estação</p>
+                    <div class="color-palette">
+                        <div class="color-dot bg-wine" data-label="Vinho"></div>
+                        <div class="color-dot bg-mustard" data-label="Mostarda"></div>
+                        <div class="color-dot bg-terracotta" data-label="Terracota"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="watermark">Daiane Borcath Fotografia</div>
+    </div>
+</body>
+</html>
