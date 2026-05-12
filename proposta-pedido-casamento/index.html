@@ -52,8 +52,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(44, 24, 16, 0.5), rgba(44, 24, 16, 0.4)), 
+            background: linear-gradient(rgba(44, 24, 16, 0.6), rgba(44, 24, 16, 0.4)), 
                         url('hero-proposal.jpg') center/cover;
+            background-position: 50% 25%;
             padding: 0 20px;
             text-align: center;
         }
@@ -470,6 +471,9 @@
             font-weight: 400;
         }
 
+        @media (min-width: 1024px) {
+            .hero { background-position: 50% 20%; }
+        }
         @media print {
             .no-print { display: none; }
             body { background-color: white; }
