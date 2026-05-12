@@ -53,6 +53,7 @@
             align-items: center;
             background: linear-gradient(180deg, rgba(44, 24, 16, 0.8) 0%, rgba(44, 24, 16, 0.3) 60%, rgba(44, 24, 16, 0.2) 100%), 
                         url('hero-namorados.jpg') center/cover;
+            background-position: 50% 25%;
             padding: 0 20px;
             text-align: center;
         }
@@ -410,6 +411,9 @@
             width: 32px;
             height: 32px;
             fill: white;
+        }
+        @media (min-width: 1024px) {
+            .hero { background-position: 50% 20%; }
         }
         @media print {
             .no-print { display: none; }
