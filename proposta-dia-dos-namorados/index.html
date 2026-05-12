@@ -169,60 +169,6 @@
             color: var(--color-accent);
             margin-right: 8px;
         }
-        .experience-section {
-            background-color: var(--color-card);
-            border-radius: 24px;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-            text-align: left;
-        }
-        .experience-section img {
-            width: 100%;
-            border-radius: 16px;
-            object-fit: cover;
-            aspect-ratio: 4/5;
-        }
-        .experience-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
-        .exp-steps {
-            list-style: none;
-            padding: 0;
-        }
-        .exp-steps li {
-            margin-bottom: 20px;
-            display: flex;
-            gap: 15px;
-        }
-        .step-number {
-            background-color: var(--color-accent);
-            color: white;
-            min-width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.8rem;
-            flex-shrink: 0;
-        }
-        .step-text strong {
-            display: block;
-            color: var(--color-primary);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-        }
-        .step-text p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: var(--color-text);
-            font-weight: 300;
-        }
         .payment-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -472,7 +418,6 @@
         }
         @media (max-width: 768px) {
             .packages-grid { grid-template-columns: 1fr; }
-            .experience-section { grid-template-columns: 1fr; }
             .about-section { grid-template-columns: 1fr; }
             .payment-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.2rem; }
@@ -490,55 +435,7 @@
             <h2>O presente que vira lembrança</h2>
             <p>Você quer surpreender seu amor com um presente diferente esse Dia dos Namorados. Um ensaio de casal não é só sobre fotos lindas — é sobre vocês dois pararem, se olharem e celebrarem o que estão construindo juntos. Um presente que vai além do material. Uma memória que fica para sempre.</p>
         </section>
-        <section class="section">
-            <div class="about-section">
-                <img src="imgs/daiane_profile.jpg" alt="Daiane Borcath - Fotógrafa">
-                <div>
-                    <h2>Daiane Borcath</h2>
-                    <p>Sou fotógrafa em Curitiba, dedicada a capturar a essência das relações e eternizar momentos de conexão genuína. Mais do que imagens, entrego memórias que aquecem o coração.</p>
-                    <p>Com experiência em ensaios de casais, famílias e eventos especiais, eu entendo a importância de cada detalhe — especialmente quando um ensaio é mais do que fotos, é um presente. Meu olhar sensível e minha discrição me tornam a parceira ideal para registrar esse momento especial de vocês.</p>
-                    <p style="margin-bottom: 0;"><span class="about-highlight">&#x2764; Fotografar é eternizar o amor.</span></p>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <div class="experience-section">
-                <img src="hero-namorados.jpg" alt="Ensaio de Casal" style="width:100%; border-radius:16px; aspect-ratio:4/5; object-fit:cover;">
-                <div>
-                    <h2>A Experiência</h2>
-                    <ul class="exp-steps">
-                        <li>
-                            <div class="step-number">1</div>
-                            <div class="step-text">
-                                <strong>Você surpreende</strong>
-                                <p>Escolhe a data, o local e o pacote. Ele só precisa saber que vai ter um ensaio — o resto é com você.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="step-number">2</div>
-                            <div class="step-text">
-                                <strong>Os dois se preparam</strong>
-                                <p>Cada um se arruma para o encontro. O clima é de um date especial.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="step-number">3</div>
-                            <div class="step-text">
-                                <strong>O Ensaio</strong>
-                                <p>Fotos leves, românticas e naturais em um cenário lindo. Só vocês dois.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="step-number">4</div>
-                            <div class="step-text">
-                                <strong>As Fotos</strong>
-                                <p>Entrego tudo editado e tratado — digital e, nos pacotes maiores, também físico.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+
         <section class="section">
             <h2>Pacotes</h2>
             <span class="urgency-banner">&#x23F0; Vagas limitadas para Dia dos Namorados</span>
